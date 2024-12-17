@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 import java.io.FileInputStream;
 import java.util.Properties;
 
+import static com.boa.filetransferminiproject.FileTransferConstant.FileTransferMessageConstant.FILE_SUCCESSFULLY_TRANSFERRED;
+import static com.boa.filetransferminiproject.FileTransferConstant.SFTPMessageConstant.*;
+
 @Service
 public class SFTPService {
 
@@ -29,29 +32,29 @@ public class SFTPService {
         ChannelSftp channelSftp = null;
 
         try {
-            // Establish JSch session
+            // Establishing JSch session
             JSch jsch = new JSch();
             session = jsch.getSession(username, host, port);
             session.setPassword(password);
 
             Properties config = new Properties();
-            config.put("StrictHostKeyChecking", "no");
+            config.put(STRICT_HOST_KEY_CHECKING, NO);
             session.setConfig(config);
 
             session.connect();
-            System.out.println("Connected to SFTP server: " + host);
+            System.out.println(CONNECTED_TO_SFTP + host);
 
             // Open SFTP channel
-            channelSftp = (ChannelSftp) session.openChannel("sftp");
+            channelSftp = (ChannelSftp) session.openChannel(SFTP);
             channelSftp.connect();
-            System.out.println("SFTP channel opened.");
+            System.out.println(SFTP_CHANNEL_OPEN);
 
             // Transfer file
             try (FileInputStream fis = new FileInputStream(localFilePath)) {
                 channelSftp.put(fis, remoteFilePath);
             }
 
-            System.out.println("File transferred successfully to: " + remoteFilePath);
+            System.out.println(FILE_SUCCESSFULLY_TRANSFERRED + remoteFilePath);
         } finally {
             if (channelSftp != null && channelSftp.isConnected()) {
                 channelSftp.disconnect();
