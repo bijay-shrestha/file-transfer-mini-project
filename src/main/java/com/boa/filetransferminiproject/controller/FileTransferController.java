@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.io.File;
 
-import static com.boa.filetransferminiproject.FileTransferConstant.FileTransferMessageConstant.*;
+import static com.boa.filetransferminiproject.constant.FileTransferConstant.FileTransferMessageConstant.*;
 
 @RestController
 @RequestMapping("/api/transfer")

@@ -1,4 +1,4 @@
-package com.boa.filetransferminiproject;
+package com.boa.filetransferminiproject.constant;
 
 public class FileTransferConstant {
 

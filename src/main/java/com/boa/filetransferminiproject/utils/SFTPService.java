@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 import java.io.FileInputStream;
 import java.util.Properties;
 
-import static com.boa.filetransferminiproject.FileTransferConstant.FileTransferMessageConstant.FILE_SUCCESSFULLY_TRANSFERRED;
-import static com.boa.filetransferminiproject.FileTransferConstant.SFTPMessageConstant.*;
+import static com.boa.filetransferminiproject.constant.FileTransferConstant.FileTransferMessageConstant.FILE_SUCCESSFULLY_TRANSFERRED;
+import static com.boa.filetransferminiproject.constant.FileTransferConstant.SFTPMessageConstant.*;
 
 @Service
 public class SFTPService {
